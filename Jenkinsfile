@@ -46,6 +46,9 @@ pipeline {
                 script {
                     withCredentials([sshUserPrivateKey(credentialsId: 'gitID', keyFileVariable: 'gitID')])  {
                         sh '''
+                        eval `ssh-agent -s`
+                        ssh-add $getID
+
                         cat deploy.yaml
                         sed -i "s/10/${BUILD_NUMBER}/g" deploy.yaml
                         cat deploy.yaml
