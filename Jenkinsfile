@@ -19,7 +19,7 @@ git branch: 'main', credentialsId: 'gitID', url: 'https://github.com/harshalbhop
                 script{
                     sh '''
                     echo 'Buid Docker Image'
-                    docker build -t abhishekf5/cicd-e2e:${BUILD_NUMBER} .
+                    docker build -t harshalb/cicd-e2e:${BUILD_NUMBER} .
                     '''
                 }
             }
@@ -30,7 +30,7 @@ git branch: 'main', credentialsId: 'gitID', url: 'https://github.com/harshalbhop
                 script{
                     sh '''
                     echo 'Push to Repo'
-                    docker push abhishekf5/cicd-e2e:${BUILD_NUMBER}
+                    docker push harshalb/cicd-e2e:${BUILD_NUMBER}
                     '''
                 }
             }
