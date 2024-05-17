@@ -18,21 +18,22 @@ pipeline {
                     sh '''
                     echo 'Buid Docker Image'
                     docker build -t harshalb/cicd-e2e:${BUILD_NUMBER} .
+                    
                     '''
                 }
             }
         }
 
-        stage('Push the artifacts') {
-            steps {
-                script {
-                    sh '''
-                    echo 'Push to Repo'
-                    docker push harshalb/cicd-e2e:${BUILD_NUMBER}
-                    '''
-                }
-            }
-        }
+        // stage('Push the artifacts') {
+        //     steps {
+        //         script {
+        //             sh '''
+        //             echo 'Push to Repo'
+        //             docker push harshalb/cicd-e2e:${BUILD_NUMBER}
+        //             '''
+        //         }
+        //     }
+        // }
 
         stage('Checkout K8S manifest SCM') {
             steps {
