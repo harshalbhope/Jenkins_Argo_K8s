@@ -44,7 +44,7 @@ pipeline {
         stage('Update K8S manifest & push to Repo') {
             steps {
                 script {
-                    withCredentials([sshUserPrivateKey(credentialsId: 'gitID', keyFileVariable: 'gitID', usernameVariable: 'hbhope')])  {
+                    withCredentials([sshUserPrivateKey(credentialsId: 'gitID', keyFileVariable: 'gitID')])  {
                         sh '''
                         cat deploy.yaml
                         sed -i "s/10/${BUILD_NUMBER}/g" deploy.yaml
@@ -52,7 +52,7 @@ pipeline {
                         git add deploy.yaml
                         git commit -m 'Updated the deploy yaml | Jenkins Pipeline'
                         git remote -v
-                        git push https://github.com/harshalbhope/k8s_manifest.git HEAD:main
+                        git push https://github.com/harshalbhope/k8s_manifest HEAD:main
                         '''
                     }
                 }
