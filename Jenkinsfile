@@ -10,10 +10,8 @@ pipeline {
         
         stage('Checkout'){
            steps {
-                git credentialsId: 'f87a34a8-0e09-45e7-b9cf-6dc68feac670', 
-                url: 'https://github.com/iam-veeramalla/cicd-end-to-end',
-                branch: 'main'
-           }
+git branch: 'main', credentialsId: 'gitID', url: 'https://github.com/harshalbhope/Jenkins_Argo_K8s' 
+        }
         }
 
         stage('Build Docker'){
